@@ -1,0 +1,24 @@
+{
+  "name": "node-scratchpad",
+  "version": "1.0.0",
+  "description": "saves all the things",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hueyy/node-scratchpad.git"
+  },
+  "author": "Huey",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/hueyy/node-scratchpad/issues"
+  },
+  "homepage": "https://github.com/hueyy/node-scratchpad#readme",
+  "dependencies": {
+    "bulma": "^0.3.1",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  }
+}
