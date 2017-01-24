@@ -100,6 +100,6 @@ app.post("/save/:secretcode", (req, res) => {
 	
 });
 
-app.listen(8080, () => {
-	console.log("Listening on http://localhost:8080");
+app.listen(process.argv[2], () => {
+	console.log("Listening on http://localhost:",process.argv[2]);
 });
