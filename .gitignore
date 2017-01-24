@@ -41,3 +41,7 @@ data
 
 # Views
 views/*.html
+
+# Coffee
+app.js
+scripts/*.js
