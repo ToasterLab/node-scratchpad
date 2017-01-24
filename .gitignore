@@ -40,4 +40,4 @@ jspm_packages
 data
 
 # Views
-*.html
+views/*.html
