@@ -1,22 +1,28 @@
 doctype html
 html
-  head
-    link(rel='stylesheet', href='bulma.css')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css')
-  body
-    a.github-fork-ribbon(href='https://github.com/hueyy/node-scratchpad', title='View this on Github', style='box-sizing:content-box;') Fork me on GitHub
-    section#app.section
-      .container
-        h1.title
-          | {{title}}
-        h2.subtitle
-          | {{subtitle}}
-        .notification
-          | {{notice}}
-        p.control
-          input.input.is-hovered(type='text', placeholder='secret-code', v-model='secretcode')
-        .block
-          a.button.is-large(v-on:click='retrieve') EDIT
-    script(src='/vue.js')
-    script(src='/vue-resource.js')
-    script(src='/scratchpad.js')
+	head
+		link(rel='stylesheet', href='bulma.css')
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css')
+	body
+		a.github-fork-ribbon(href='https://github.com/hueyy/node-scratchpad', title='View this on Github', style='box-sizing:content-box;') Fork me on GitHub
+		section#app.section
+			.container
+				h1.title
+					| {{title}}
+				h2.subtitle
+					| {{subtitle}}
+				.notification
+					| {{notice}}
+				p.control
+					input.input.is-hovered(type='text', placeholder='secret-code', v-model='secretcode')
+				.block
+					a.button.is-large(v-on:click='retrieve') EDIT
+				article.message(v-if='file.title.length>0')
+					div.message-header
+						p
+							| {{file.title}}
+					div.message-body
+						| {{file.message}}
+		script(src='/vue.js')
+		script(src='/vue-resource.js')
+		script(src='/scratchpad.js')

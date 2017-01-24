@@ -40,7 +40,7 @@ app.get '/bulma.css.map', (req, res) ->
 app.get '/vue.js', (req, res) ->
   res.sendFile path.join(__dirname + '/node_modules/vue/dist/vue.js')
 app.get '/vue-resource.js', (req, res) ->
-  res.sendFile path.join(__dirname + '/node_modules/vue/dist/vue.js')
+  res.sendFile path.join(__dirname + '/node_modules/vue-resource/dist/vue-resource.js')
 
 ###
 		main logic
@@ -63,6 +63,9 @@ app.get '/view/:secretcode', (req, res) ->
   file = fs.readFile(path.join(__dirname, 'data', secretcode + '.txt'), { encoding: 'utf8' }, (err, data) ->
     if err
       console.log(err)
+      res.send JSON.stringify(
+      	'status': 'fail'
+      	'message': 'no such file')
     else
       res.send JSON.stringify('message': data)
   )
