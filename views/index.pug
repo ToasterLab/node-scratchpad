@@ -13,16 +13,23 @@ html
 					| {{subtitle}}
 				.notification
 					| {{notice}}
-				p.control
-					input.input.is-hovered(type='text', placeholder='secret-code', v-model='secretcode')
-				.block
-					a.button.is-large(v-on:click='retrieve') EDIT
-				article.message(v-if='file.title.length>0')
-					div.message-header
-						p
-							| {{file.title}}
-					div.message-body
-						| {{file.message}}
+					a(href='#',v-on:click='getAll',name='getAllLink')
+						|  See samples.
+				div.control.is-horizontal
+					div.control-label
+						label.label Retrieve
+					div.control
+						p.control
+							input.input.is-hovered(type='text', placeholder='secret-code', v-model='secretcode', @keyup.enter='retrieve')
+				hr
+				article.edit-message(v-if='file.title.length>0')
+					p.control
+						input.input(type='text',v-model='file.title')
+					p.control
+						textarea.textarea(v-model='file.message',placeholder='create a new pad')
+					p.control
+						a.button(v-on:click='save') SAVE
+				article.view-all(v-if='list.length>0')
 		script(src='/vue.js')
 		script(src='/vue-resource.js')
 		script(src='/scratchpad.js')

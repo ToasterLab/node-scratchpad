@@ -60,12 +60,14 @@ app.get '/view/all', (req, res) ->
 
 app.get '/view/:secretcode', (req, res) ->
   secretcode = req.params.secretcode
-  file = fs.readFile(path.join(__dirname, 'data', secretcode + '.txt'), { encoding: 'utf8' }, (err, data) ->
+  file = fs.readFile(path.join(__dirname, 'data', secretcode + '.txt'), "utf8", (err, data) ->
     if err
       console.log(err)
-      res.send JSON.stringify(
-      	'status': 'fail'
-      	'message': 'no such file')
+      fs.writeFile(path.join(__dirname, 'data', secretcode + '.txt'), "", () =>
+	      res.send JSON.stringify(
+	      	'status': 'fail'
+	      	'message': '')
+	    )
     else
       res.send JSON.stringify('message': data)
   )
@@ -73,7 +75,7 @@ app.get '/view/:secretcode', (req, res) ->
 app.post '/save/:secretcode', (req, res) ->
   secretcode = fileCleaner(req.params.secretcode)
   contents = req.body.message
-  file = fs.writeFile(path.join(__dirname, 'data', secretcode + '.txt'), contents, { encoding: 'utf8' }, (err) ->
+  file = fs.writeFile(path.join(__dirname, 'data', secretcode + '.txt'), contents, { encoding: 'utf8'}, (err) ->
     if err
       console.log(err)
     else
